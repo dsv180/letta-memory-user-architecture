@@ -81,4 +81,4 @@ description: "Agent behavioral rules — critical, communication, publication. v
 
 ---
 
-> **Конституция памяти** — `memory-design/architecture.md` (устройство: слои, принципы, соглашения). Процедуры изменения структуры и выпуска версий — в `memory-design/lifecycle.md`. Перед изменением структуры — сначала конституция, затем процедуры.
+> **Конституция памяти** — `memory-design/architecture.md` (устройство: слои, принципы, соглашения). Процедуры изменения структуры и выпуска версий — в `memory-design/lifecycle.md`; внедрение архитектуры в свою память — в `memory-design/migration.md`. Перед изменением структуры — сначала конституция, затем процедуры.

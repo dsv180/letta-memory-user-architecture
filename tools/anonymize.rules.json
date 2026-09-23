@@ -18,7 +18,7 @@
     "keep_as_examples": ["environment-compass"],
     "index_template": "tools/templates/index.json"
   },
-  "local_files": ["reference/lessons/memory-repo.md"],
+  "local_files": ["memory-design/repo.md"],
   "forbidden_patterns": [
     "[A-Za-z]:\\\\Users\\\\(?!<)[^\\\\\\s]+",
     "(?:/home/|/Users/)(?!<)[^\\s/]+"

@@ -41,4 +41,3 @@ description: "Lessons entry point — instructions and index. version: 1.4"
 - [[reference/lessons/versioning.md]] — версионирование Letta
 - [[reference/lessons/windows-guide.md]] — команды Windows/PowerShell
 - [[reference/lessons/word-formatting.md]] — оформление Word
-- `reference/lessons/memory-repo.md` — репозиторий версий архитектуры памяти (локальный, в публичный слепок не идёт)

@@ -19,7 +19,6 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
   - справочники: communication-protocol, github-guide, hardware,
     secrets-guide, system-prompt-updates, versioning, windows-guide,
     word-formatting;
-  - локальные (в публичный слепок не идут): memory-repo.
   Оглавление — в `lessons.md`. Перед работой над типовой задачей —
   открыть `lessons.md`, найти тему, прочитать соответствующий файл.
 **Правила:**
@@ -38,9 +37,12 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
 - config.md, notes.md, tasks.md — обязательно
 - skills.md, glossary.md, lessons.md — опционально
 Внутри проекта — только файлы, без подпапок.
-### memory-design/ — конституция
+### memory-design/ — конституция (ядро)
+Ядро самодостаточно: взял папку — получил устройство и процедуры, остальное наращивается после.
 - architecture.md — устройство памяти: слои, принципы, соглашения.
-- lifecycle.md — процедуры жизненного цикла: добавление/удаление файлов, миграция версий, выпуск слепка.
+- lifecycle.md — как сопровождать: добавление/удаление файлов, обновление своей версии, выпуск слепка.
+- migration.md — как применить архитектуру к своей памяти (разовое внедрение).
+- repo.md — наш репозиторий версий (локальный, в публичный слепок не идёт).
 ---
 ## Принципы
 - Один файл — одна тема.
@@ -57,7 +59,7 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
 **Скиллы.** Agent-scoped — $MEMORY_DIR/skills/. Project-scoped — <physical_path>/.agents/skills/. Global-scoped — ~/.letta/skills/. Детали — в [[projects/PROJECTS.md]].
 ---
 ## Жизненный цикл
-Добавление и удаление файлов, миграция версий и выпуск слепка — процедуры в [[memory-design/lifecycle.md]]. Здесь только принципы:
+Добавление и удаление файлов, обновление версии и выпуск слепка — процедуры в [[memory-design/lifecycle.md]]; внедрение архитектуры в свою память — в [[memory-design/migration.md]]. Здесь только принципы:
 - Любое изменение файлов сопровождается обновлением индекса (`lessons.md` / `index.json` / `index.md`).
 - Публикуемый слепок версии обезличивается до коммита: репозиторий публичный.
 ---
