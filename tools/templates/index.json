@@ -1,0 +1,11 @@
+{
+  "_note": "Манифест проектов. У версии-слепка он пуст: проекты у каждого агента свои. Примеры проектов — в projects/_examples/. Шаблон нового проекта — в _template.json.",
+  "projects": {},
+  "archived": {},
+  "statistics": {
+    "total": 0,
+    "active": 0,
+    "archived": 0,
+    "last_updated": ""
+  }
+}

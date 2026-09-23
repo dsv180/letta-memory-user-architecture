@@ -1,0 +1,8 @@
+# System files
+Thumbs.db
+.DS_Store
+*.swp
+__pycache__/
+
+# Локальный слой правил обезличивания — у каждой машины свой, не публикуется
+tools/anonymize.local.json

@@ -1,0 +1,9 @@
+# Единый стиль переводов строк: LF и в репозитории, и в рабочей копии,
+# независимо от ОС и настройки core.autocrlf. Иначе на Windows файлы
+# становятся CRLF и ломают сравнения текста в tools/anonymize.py.
+* text=auto eol=lf
+
+# Бинарные файлы — не трогать
+*.png binary
+*.jpg binary
+*.zip binary

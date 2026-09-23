@@ -1,0 +1,12 @@
+#!/bin/sh
+# Гейт перед push: не пустить персональные данные в публичный репозиторий.
+# Устанавливается через: git config core.hooksPath tools/hooks
+set -e
+root=$(git rev-parse --show-toplevel)
+PY=$(command -v python3 || command -v python || true)
+if [ -z "$PY" ]; then
+  echo "pre-push: Python не найден — гейт обезличивания не выполнен." >&2
+  echo "pre-push: поставьте Python или снимите гейт осознанно (git push --no-verify)." >&2
+  exit 1
+fi
+"$PY" "$root/tools/check-anonymized.py"

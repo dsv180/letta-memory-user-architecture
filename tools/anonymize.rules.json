@@ -1,0 +1,25 @@
+{
+  "version": "1.4",
+  "_comment": "Общий (публичный) слой правил обезличивания. Только машинно-независимое: переменные окружения, структурные шаблоны путей, политика projects. Личные имена, организации и специфичные пути — в tools/anonymize.local.json (он в .gitignore).",
+  "scan": ["1.4", "README.md", "MIGRATION.md"],
+  "home_placeholder": "~",
+  "env_paths": [
+    { "env": "MEMORY_DIR", "placeholder": "$MEMORY_DIR" },
+    { "env": "LETTA_TRANSCRIPT_ROOT", "default": "~/.letta/transcripts", "placeholder": "$LETTA_TRANSCRIPT_ROOT" },
+    { "env": "LETTA_LOCAL_BACKEND_DIR", "default": "~/.letta/lc-local-backend", "placeholder": "$LETTA_LOCAL_BACKEND_DIR" },
+    { "env": "TEMP", "placeholder": "<temp dir>" }
+  ],
+  "regex_replacements": [
+    ["([A-Za-z]:\\\\Users\\\\|/home/|/Users/)(?!<)[^\\\\/\\s]+", "\\1<username>"],
+    ["(^|[.!?]\\s+)пользовател", "\\1Пользовател"]
+  ],
+  "projects": {
+    "dir": "1.4/projects",
+    "keep_as_examples": ["environment-compass"],
+    "index_template": "tools/templates/index.json"
+  },
+  "forbidden_patterns": [
+    "[A-Za-z]:\\\\Users\\\\(?!<)[^\\\\\\s]+",
+    "(?:/home/|/Users/)(?!<)[^\\s/]+"
+  ]
+}
