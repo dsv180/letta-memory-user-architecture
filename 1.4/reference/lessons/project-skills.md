@@ -18,6 +18,17 @@ agent overrides computer, computer overrides bundled.
 If a skill exists in `$MEMORY_DIR/skills/` or `~/.letta/skills/` — it is
 always available, in any project. Duplicating it into a project is pointless:
 it would need to be maintained in two places.
+## Duplicates between scopes (checked 2026-09-23)
+A bundled skill and an agent-scoped skill with the same name coexist as two
+independent versions: the agent-scoped one shadows the bundled one. Editing
+one leaves the other untouched, and the shadowed version is easy to forget.
+Real case: `github` exists both bundled and in `$MEMORY_DIR/skills/github`.
+Finding a duplicate: report it and propose keeping a single version — delete
+the agent copy if the bundled one is enough, or keep the agent copy as the
+maintained version and stop relying on the bundled one.
+Check what actually exists before reasoning about it:
+`ls $MEMORY_DIR/skills/`, `ls ~/.letta/skills/`, and for a project
+`ls <physical_path>/.agents/skills/`.
 ## Creating a project skill
 1. **Check for an existing skill with the same name.**
    - `/skills` shows all available skills.
@@ -39,3 +50,9 @@ it would need to be maintained in two places.
 - not transferred between machines automatically;
 - not visible to other agents;
 - works only when dialogue CWD = project folder.
+
+## Проверка на дубль
+Прежде чем объявлять скилл дублем, выясни, какие источники реально подключены: набор
+`curated` в дистрибутиве может быть не загружен, и тогда одноимённый агентский скилл
+(`$MEMORY_DIR/skills/`) — единственный активный. Ориентир — `/skills`: если имя
+встречается один раз, активен один источник и «удалять дубль» нечего.
