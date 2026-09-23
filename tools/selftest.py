@@ -158,6 +158,26 @@ def main() -> int:
         except ValueError:
             check(True, "нелатинский name_en отклонён")
 
+    print("Тест 5: локальные файлы не попадают в слепок")
+    rules_lf = dict(rules)
+    rules_lf["scan"] = ["1.4"]
+    rules_lf["local_files"] = ["reference/lessons/local-only.md"]
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        local_file = root / "1.4" / "reference" / "lessons" / "local-only.md"
+        local_file.parent.mkdir(parents=True)
+        local_file.write_text("локальный справочник", encoding="utf-8")
+        keep_file = root / "1.4" / "reference" / "lessons.md"
+        keep_file.write_text("индекс", encoding="utf-8")
+        old_root = anon.ROOT
+        anon.ROOT = root
+        try:
+            log = anon.process_local_files(rules_lf, dry=False)
+        finally:
+            anon.ROOT = old_root
+        check(not local_file.exists(), "локальный файл удалён из слепка", str(log))
+        check(keep_file.exists(), "остальные файлы не тронуты")
+
     if FAILED:
         print(f"\nПРОВАЛЕНО: {len(FAILED)} проверок -> {', '.join(FAILED)}")
         return 1

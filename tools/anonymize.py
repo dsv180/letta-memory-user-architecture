@@ -196,6 +196,25 @@ def process_projects(rules: dict, dry: bool) -> list[str]:
     return log
 
 
+def process_local_files(rules: dict, dry: bool) -> list[str]:
+    """Файлы, которые не публикуются: в слепок они не попадают."""
+    names = rules.get("local_files", [])
+    if not names:
+        return []
+    log = []
+    for item in rules.get("scan", []):
+        base = ROOT / item
+        if not base.is_dir():
+            continue
+        for name in names:
+            path = base / name
+            if path.is_file():
+                log.append(f"remove {rel(path)} — локальный файл, не публикуется")
+                if not dry:
+                    path.unlink()
+    return log
+
+
 def main() -> int:
     force_utf8()
     parser = argparse.ArgumentParser(description="Обезличить слепок памяти перед публикацией.")
@@ -233,6 +252,10 @@ def main() -> int:
 
     print("-- projects --")
     for line in process_projects(rules, args.dry_run):
+        print("  " + line)
+
+    print("-- локальные файлы --")
+    for line in process_local_files(rules, args.dry_run):
         print("  " + line)
 
     print(f"Готово. Файлов изменено: {files_changed}, замен: {subs}.")
