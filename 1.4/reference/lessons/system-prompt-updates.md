@@ -1,5 +1,5 @@
 ---
-description: "Procedure for checking and updating system prompt after Letta Desktop update. version: 1.4"
+description: "Процедура проверки и обновления system prompt после апдейта Letta Code Desktop. version: 1.4"
 ---
 # Обновление system prompt при апдейте ЛД
 ## Зачем это нужно

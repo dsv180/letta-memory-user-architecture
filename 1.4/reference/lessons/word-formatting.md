@@ -1,5 +1,5 @@
 ---
-description: "Microsoft Word document formatting rules. version: 1.4"
+description: "Microsoft Word document formatting rules as specified by Sergey. version: 1.4"
 ---
 # Форматирование Word
 

@@ -1,6 +1,7 @@
 ---
 description: "How versioning works — agent runs inside harness, not self-updating. version: 1.4"
 ---
+
 # Версионирование
 
 Я — агент внутри Letta Desktop (или CLI). Моя версия = версия харнеса (Letta Code).

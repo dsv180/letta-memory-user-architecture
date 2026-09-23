@@ -1,6 +1,7 @@
 ---
-description: "GitHub CLI — install, auth, trade controls, releases, attribution. version: 1.4"
+description: "GitHub CLI установка, авторизация, ограничения и работа с репозиториями. version: 1.4"
 ---
+
 # GitHub-гайд
 
 Справочный файл. Читай, когда нужно работать с GitHub: клонировать, пушить, создавать релизы, публиковать проекты.
@@ -16,7 +17,7 @@ winget install --id GitHub.cli --silent --accept-package-agreements --accept-sou
 
 ## Авторизация
 
-Авторизация через браузер (вход через Google SSO — аккаунт пользователя):
+Авторизация через браузер (вход через Google SSO — аккаунт <логин GitHub>):
 ```powershell
 gh auth login --web
 ```
@@ -24,14 +25,28 @@ gh auth login --web
 
 ## git config
 
-Конфиг локального git настраивается через `gh auth setup-git`.
-Проверить: `git config --local --get user.name`, `git config --local --get user.email`.
+Локальный git настроен через `gh auth setup-git`:
+- user.name: `<логин GitHub>`
+- user.email: `<email пользователя>`
+- Ветка по умолчанию: `main`
+
+Проверить локальные настройки: `git config --local --get user.name`, `git config --local --get user.email`.
 
 ## Ограничения
 
-**Trade controls restriction** (02.09.2026) — аккаунт пользователя не может создавать репозитории через API или `gh repo create`. Только через веб-интерфейс: `github.com/new`.
+**Trade controls restriction** (02.09.2026, подтверждено 21.09.2026) — аккаунт <логин GitHub> не может создавать репозитории через API или `gh repo create`. Только через веб-интерфейс: `github.com/new`.
 
-Публиковать можно только публичные репозитории (приватные заблокированы региональной политикой).
+Публиковать можно только публичные репозитории (приватные заблокированы региональной политикой — аккаунт привязан к домашнему региону).
+
+Смена видимости (public → private) и переименование — под тем же региональным риском; отдельно не проверялись. Поэтому «убрать персональное из публичного репо» решается **переписыванием существующего** репо, а не созданием или переименованием нового — детали в локальном справочнике `reference/lessons/memory-repo.md` (в публичный слепок не входит).
+
+Ограничение на уровне аккаунта/региона, а не сети: повторный тест 21.09.2026 в другом сетевом окружении дал ту же ошибку `GraphQL: Trade controls restricted owner can't create repositories.` Смена окружения его не снимает — не предлагать повторять этот тест «на другой сети».
+
+## Работа с существующими репозиториями
+
+- `fetch`, `push`, `gh api`, `gh repo view` по уже существующим репозиториям **работают** (проверено 21.09.2026: push в `letta-memory-user-architecture` прошёл). Блокирует только создание новых.
+- Если в origin сделан force-push, локальный клон расходится (`ahead N, behind M`). Локальные коммиты не терять: сначала сохранить старую линию веткой (`git branch legacy-<ver> <sha>`), и только с разрешения пользователя делать `git reset --hard origin/master`. Детали — в локальном справочнике `reference/lessons/memory-repo.md` (в публичный слепок не входит).
+- При проверке облака после force-push: `git fetch origin --prune` и смотреть `refs/heads` в origin, а не доверять локальному кэшу.
 
 ## Работа с прокси
 
@@ -47,6 +62,7 @@ $env:ALL_PROXY="http://proxy:port"
 git tag v<version>
 git push origin v<version>
 gh release create v<version> --title "v<version>" --notes "..."
+```
 
 ## Атрибуция публичных проектов
 

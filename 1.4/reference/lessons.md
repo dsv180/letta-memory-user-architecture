@@ -4,10 +4,12 @@ description: "Lessons entry point — instructions and index. version: 1.4"
 # Уроки
 Уроки — правила поведения и техническое знание, извлечённое из опыта.
 Применяются, чтобы не повторять ошибок.
+
 ## Как пользоваться уроками
 Перед работой над типовой задачей — открой этот файл, найди тему
 в оглавлении, прочитай соответствующий файл в `reference/lessons/`.
 Не читай всю папку сразу.
+
 ## Как добавить новый урок
 1. Определи тему.
 2. Если тема уже есть в оглавлении — допиши в соответствующий файл.
@@ -19,15 +21,17 @@ description: "Lessons entry point — instructions and index. version: 1.4"
    а не в `reference/lessons/`.
 Критерий: если урок повторится в другом проекте — он общий. Если только
 здесь — проектный.
+
 ## Уроки
 - [[reference/lessons/memory.md]] — память и агенты
 - [[reference/lessons/technical.md]] — технические специфические случаи
 - [[reference/lessons/mods.md]] — моды и инструменты
 - [[reference/lessons/yaml.md]] — YAML frontmatter
-- [[reference/lessons/git-local.md]] — локальный git, filter-repo
+- [[reference/lessons/git-local.md]] — локальный git, filter-repo, LF/CRLF, сверка с облачной историей
 - [[reference/lessons/git-github.md]] — облачный GitHub, клонирование
 - [[reference/lessons/project-skills.md]] — проектные скиллы
-- [[reference/lessons/network.md]] — сетевая безопасность
+- [[reference/lessons/network.md]] — сеть, DNS, сетевая безопасность
+
 ## Справочники
 - [[reference/lessons/communication-protocol.md]] — протокол общения, разбор длинных сообщений
 - [[reference/lessons/github-guide.md]] — gh CLI, авторизация, trade controls
@@ -37,3 +41,4 @@ description: "Lessons entry point — instructions and index. version: 1.4"
 - [[reference/lessons/versioning.md]] — версионирование Letta
 - [[reference/lessons/windows-guide.md]] — команды Windows/PowerShell
 - [[reference/lessons/word-formatting.md]] — оформление Word
+- `reference/lessons/memory-repo.md` — репозиторий версий архитектуры памяти (локальный, в публичный слепок не идёт)

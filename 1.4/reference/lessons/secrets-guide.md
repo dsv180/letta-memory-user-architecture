@@ -1,6 +1,7 @@
 ---
-description: "Rules for handling secrets, API keys, auth.json, environment variables. version: 1.4"
+description: "Rules for handling secrets, API keys, auth.json, and environment variables. version: 1.4"
 ---
+
 # Работа с секретами
 
 Справочный файл. Читай, когда речь заходит об API-ключах, токенах, auth.json или настройке безопасности.

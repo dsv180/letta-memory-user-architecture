@@ -1,6 +1,7 @@
 ---
-description: "Hardware info for home and work environments. version: 1.4"
+description: "Hardware info for пользователь's environments — home (primary) and work. version: 1.4"
 ---
+
 ## Домашний ПК (primary)
 
 **Производитель:** AZW (Beelink EQ)
@@ -17,4 +18,5 @@ description: "Hardware info for home and work environments. version: 1.4"
 **Ограничения:** Не выполнять тяжёлых задач. ОЗУ критично мало — не запускать несколько тяжёлых процессов.
 
 ## Рабочий ПК
+
 Заполняется по мере появления данных.

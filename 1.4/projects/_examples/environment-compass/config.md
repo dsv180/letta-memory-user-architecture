@@ -10,7 +10,7 @@ description: "Environment Compass — конфигурация: пути, git, �
 - **MemFS:** `projects/_examples/environment-compass/`
 
 ## Репозиторий
-- **GitHub:** https://github.com/dsv180/environment-compass
+- **GitHub:** https://github.com/<логин GitHub>/environment-compass
 - **Версия:** v0.1.1
 - **Локальный git:** да (origin → GitHub)
 

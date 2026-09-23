@@ -18,7 +18,8 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
     project-skills, network;
   - справочники: communication-protocol, github-guide, hardware,
     secrets-guide, system-prompt-updates, versioning, windows-guide,
-    word-formatting.
+    word-formatting;
+  - локальные (в публичный слепок не идут): memory-repo.
   Оглавление — в `lessons.md`. Перед работой над типовой задачей —
   открыть `lessons.md`, найти тему, прочитать соответствующий файл.
 **Правила:**
@@ -38,7 +39,8 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
 - skills.md, glossary.md, lessons.md — опционально
 Внутри проекта — только файлы, без подпапок.
 ### memory-design/ — конституция
-Только architecture.md. Общие принципы, без процедур.
+- architecture.md — устройство памяти: слои, принципы, соглашения.
+- lifecycle.md — процедуры жизненного цикла: добавление/удаление файлов, миграция версий, выпуск слепка.
 ---
 ## Принципы
 - Один файл — одна тема.
@@ -47,7 +49,18 @@ description: "Memory architecture — layers, files, rules. version: 1.4"
 Отдельным полем version не хранится — харнес Letta пропускает
 только `description`, `read_only`, `limit`.
 - MemFS — git-репозиторий, изменения коммитятся.
+- Никакой магии вне `system/`: только ядро попадает в контекст само,
+остальное читается явно.
 ---
 ## Соглашения
 **CWD и проект.** При переключении на проект CWD диалога = physical_path проекта. Детали — в [[projects/PROJECTS.md]].
 **Скиллы.** Agent-scoped — $MEMORY_DIR/skills/. Project-scoped — <physical_path>/.agents/skills/. Global-scoped — ~/.letta/skills/. Детали — в [[projects/PROJECTS.md]].
+---
+## Жизненный цикл
+Добавление и удаление файлов, миграция версий и выпуск слепка — процедуры в [[memory-design/lifecycle.md]]. Здесь только принципы:
+- Любое изменение файлов сопровождается обновлением индекса (`lessons.md` / `index.json` / `index.md`).
+- Публикуемый слепок версии обезличивается до коммита: репозиторий публичный.
+---
+## Что НЕ входит в архитектуру
+- **`skills/`** — управляются харнесом. Проектные скиллы (`projects/<project>/skills.md`) — рекомендации, какие скиллы загружать, но не блокировка.
+- **`profile.png`** — аватар. Лежит в корне памяти, архитектуре не подчиняется.

@@ -1,5 +1,5 @@
 ---
-description: "Windows commands, PowerShell equivalents, encoding, script writing rules. version: 1.4"
+description: "Windows-specific commands, PowerShell equivalents, encoding, and script writing rules. version: 1.4"
 ---
 # Windows-гайд
 
@@ -7,7 +7,7 @@ description: "Windows commands, PowerShell equivalents, encoding, script writing
 
 ## Основные правила для команд и скриптов
 
-**Интерпретатор Python** — `python`. Python 3.14.7 установлен по пути `C:\Users\<username>\AppData\Local\Programs\Python\Python314\python.exe`. Добавлен в PATH пользователя. `python3` не используй — его нет.
+**Интерпретатор Python** — команда `python` разворачивается в Python 3.12.10 (`~\AppData\Local\Programs\Python\Python312\python.exe`). Рядом установлен и Python 3.14 (`Python314`, он же по умолчанию у лаунчера `py -0p`), но в PATH первым идёт `python` = 3.12. `python3` не используй — его нет.
 
 **Оболочка** — Bash tool в Letta на Windows исполняет команды в PowerShell. Скрипты пиши для PowerShell (`.ps1`) или CMD (`.bat`/`.cmd`). Bash-синтаксис (`&&`, `||`, `;`, heredocs) не используй — не работает.
 
@@ -66,7 +66,7 @@ description: "Windows commands, PowerShell equivalents, encoding, script writing
 - Если видишь кракозябры — сохраняй вывод в файл: `Out-File -Encoding utf8`.
 
 ## Пути и файлы пользователя
-- Загрузки всегда в `C:\Users\<username>\Downloads\`. Если нужно найти скачанный файл — ищи там.
+- Загрузки всегда в `~\Downloads\`. Если нужно найти скачанный файл — ищи там.
 - Если нужно сохранить файл — сначала скопируй из Downloads, потом сохраняй куда нужно.
 
 ## Регистр в OpenSSH
