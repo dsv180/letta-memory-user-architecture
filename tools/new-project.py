@@ -2,9 +2,9 @@
 """Генератор каркаса проекта в MemFS.
 
 Делает механическую часть создания проекта:
-  - создаёт 1.4/projects/<name_en>/ с обязательными файлами из tools/templates/project/;
-  - добавляет запись в 1.4/projects/index.json и обновляет statistics;
-  - добавляет [[path]]-ссылки в 1.4/projects/index.md.
+  - создаёт projects/<name_en>/ с обязательными файлами из tools/templates/project/;
+  - добавляет запись в projects/index.json и обновляет statistics;
+  - добавляет [[path]]-ссылки в projects/index.md.
 
 Смысловую часть (название, путь, описание, статус) подставляет тот, кто вызывает.
 Физическую папку на диске генератор НЕ создаёт — она вне репозитория, её создаёт
@@ -72,7 +72,7 @@ def create_project(
     if not physical_path.strip():
         raise ValueError("physical_path обязателен")
 
-    projects_dir = root / "1.4" / "projects"
+    projects_dir = root / "projects"
     index_path = projects_dir / "index.json"
     index_md = projects_dir / "index.md"
     project_dir = projects_dir / name_en

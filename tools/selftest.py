@@ -100,7 +100,7 @@ def main() -> int:
     gen = load_module("gen", "new-project.py")
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
-        proj = root / "1.4" / "projects"
+        proj = root / "projects"
         proj.mkdir(parents=True)
         (proj / "index.json").write_text(
             json.dumps(
@@ -160,14 +160,13 @@ def main() -> int:
 
     print("Тест 5: локальные файлы не попадают в слепок")
     rules_lf = dict(rules)
-    rules_lf["scan"] = ["1.4"]
     rules_lf["local_files"] = ["reference/lessons/local-only.md"]
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
-        local_file = root / "1.4" / "reference" / "lessons" / "local-only.md"
+        local_file = root / "reference" / "lessons" / "local-only.md"
         local_file.parent.mkdir(parents=True)
         local_file.write_text("локальный справочник", encoding="utf-8")
-        keep_file = root / "1.4" / "reference" / "lessons.md"
+        keep_file = root / "reference" / "lessons.md"
         keep_file.write_text("индекс", encoding="utf-8")
         old_root = anon.ROOT
         anon.ROOT = root

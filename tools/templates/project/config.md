@@ -1,5 +1,5 @@
 ---
-description: "{{title}} — конфигурация: пути, инструменты, git. version: 1.4"
+description: "{{title}} — конфигурация: пути, инструменты, git. version: 1.5"
 ---
 # Конфигурация: {{title}}
 

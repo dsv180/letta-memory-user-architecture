@@ -1,5 +1,5 @@
 ---
-description: "{{title}} — смысл проекта и контекст. version: 1.4"
+description: "{{title}} — смысл проекта и контекст. version: 1.5"
 ---
 # {{title}}
 

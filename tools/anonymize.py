@@ -197,21 +197,18 @@ def process_projects(rules: dict, dry: bool) -> list[str]:
 
 
 def process_local_files(rules: dict, dry: bool) -> list[str]:
-    """Файлы, которые не публикуются: в слепок они не попадают."""
-    names = rules.get("local_files", [])
-    if not names:
-        return []
+    """Файлы, которые не публикуются: в слепок они не попадают.
+
+    Пути в `local_files` — от корня репозитория: папки версии в репозитории нет,
+    файлы версии лежат в корне.
+    """
     log = []
-    for item in rules.get("scan", []):
-        base = ROOT / item
-        if not base.is_dir():
-            continue
-        for name in names:
-            path = base / name
-            if path.is_file():
-                log.append(f"remove {rel(path)} — локальный файл, не публикуется")
-                if not dry:
-                    path.unlink()
+    for name in rules.get("local_files", []):
+        path = ROOT / name
+        if path.is_file():
+            log.append(f"remove {rel(path)} — локальный файл, не публикуется")
+            if not dry:
+                path.unlink()
     return log
 
 

@@ -1,0 +1,51 @@
+{
+  "_description": "Шаблон нового проекта. Копируется в projects/index.json при создании. Файлы создаются в MemFS, физические папки — на диске.",
+  "fields": {
+    "title": { "required": true, "type": "string", "description": "Русское название проекта", "value": "" },
+    "name_en": { "required": true, "type": "string", "description": "Английский идентификатор, имя папки в projects/", "value": "" },
+    "description": { "required": true, "type": "string", "description": "Краткое описание", "value": "" },
+    "status": { "required": true, "type": "enum", "values": ["proposal", "planning", "active", "paused", "completed", "published", "archived"], "description": "Статус проекта", "value": "proposal" },
+    "created_at": { "required": true, "type": "date", "description": "Дата создания YYYY-MM-DD", "value": "" },
+    "project_home": { "required": true, "type": "path", "description": "projects/<name_en>", "value": "" },
+    "physical_path": { "required": true, "type": "path", "description": "Абсолютный путь к папке проекта на диске", "value": "" },
+    "git": {
+      "required": false,
+      "type": "object",
+      "description": "Заполняется только если проект использует git. Если нет — оставить с enabled: false",
+      "value": {
+        "local": { "enabled": false },
+        "remote": { "enabled": false, "hosting": "", "url": "", "visibility": "", "default_branch": "main", "latest_tag": "" }
+      }
+    },
+    "depends_on": { "required": false, "type": "array", "description": "Проекты-зависимости", "value": [] },
+    "skills": { "required": false, "type": "array", "description": "Скиллы проекта", "value": [] },
+    "tags": { "required": false, "type": "array", "description": "Теги для поиска", "value": [] },
+    "version": { "required": true, "type": "integer", "value": 1 },
+    "metadata": { "required": false, "type": "object", "value": {} }
+  },
+  "memfs_files": [
+    { "name": "config.md", "required": true, "description": "Пути, инструменты, git" },
+    { "name": "notes.md", "required": true, "description": "Смысл проекта, специфика, контекст" },
+    { "name": "tasks.md", "required": true, "description": "План работ. Статус — только в JSON" },
+    { "name": "skills.md", "required": false, "description": "Скиллы проекта" },
+    { "name": "glossary.md", "required": false, "description": "Термины проекта" },
+    { "name": "project-rules.md", "required": false, "description": "Оглавление регламентов и справочников проекта (если заполнена папка project-rules/)" }
+  ],
+  "disk_dirs": {
+    "_description": "Стартовый набор папок при создании проекта на диске. Не описание текущего состояния — оно меняется.",
+    "dirs": [
+      { "name": "project/", "description": "Код, скрипты, подпроекты" },
+      { "name": ".temp/", "description": "Временные файлы" },
+      { "name": "output/", "description": "Финальные артефакты" },
+      { "name": "input/", "description": "Внешние данные" }
+    ]
+  },
+  "rules": [
+    "MemFS — это память, не зеркало диска. Структуру физических папок в MemFS не копировать.",
+    "Внутри проекта в MemFS — только файлы, кроме служебной папки project-rules/. Максимальная глубина: projects/<name>/project-rules/<file>.",
+    "skills.md, glossary.md, project-rules.md создаются только при наличии контента.",
+    "Статус проекта — только в JSON. В tasks.md статуса нет.",
+    "Структура физических папок не описывается в notes.md — она меняется, синхронизация невозможна.",
+    "Project-scoped скиллы лежат в <physical_path>/.agents/skills/, не в MemFS. Процедура — в PROJECTS.md."
+  ]
+}
