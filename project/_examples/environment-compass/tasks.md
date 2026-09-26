@@ -1,5 +1,5 @@
 ---
-description: "Environment Compass — план работ. version: 1.5"
+description: "Environment Compass — план работ. version: 1.6"
 ---
 
 # План: Environment Compass

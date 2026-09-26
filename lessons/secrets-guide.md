@@ -1,5 +1,5 @@
 ---
-description: "Rules for handling secrets, API keys, auth.json, and environment variables. version: 1.5"
+description: "Rules for handling secrets, API keys, auth.json, and environment variables. version: 1.6"
 ---
 
 # Работа с секретами

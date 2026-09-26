@@ -1,5 +1,5 @@
 ---
-description: "Hardware info for пользователь's environments — home (primary) and work. version: 1.5"
+description: "Hardware info for пользователь's environments — home (primary) and work. version: 1.6"
 ---
 
 ## Домашний ПК (primary)

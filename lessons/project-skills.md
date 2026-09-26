@@ -1,7 +1,8 @@
 ---
-description: "Lesson: project-scoped skills — discovery, priority, creation. version: 1.5"
+description: "Lesson: project-scoped skills — discovery, priority, creation. version: 1.6"
 ---
 # Lesson: project-scoped skills
+Источник: [Skills](https://docs.letta.com/configuration/skills) (docs.letta.com). Сверено 26.09.2026.
 ## How Letta discovers skills
 The harness scans four sources in descending priority. On ID collision,
 the higher-priority source wins:
@@ -12,6 +13,11 @@ the higher-priority source wins:
 | 3 | Computer | `~/.letta/skills/` |
 | 4 (lowest) | Bundled | inside Letta Code |
 List available skills — `/skills` command.
+
+Официально project-scoped скиллы — это скиллы проекта: лежат в `.agents/skills/`
+(локальная директория проекта, то есть `<physical_path>`), принадлежат проекту,
+а не агенту, и обычно версионируются в репозитории проекта (GitHub). Letta ими
+не управляет — только обнаруживает; в MemFS не хранятся.
 ## What this means in practice
 The same skill can live in multiple places. Project overrides agent,
 agent overrides computer, computer overrides bundled.
@@ -22,8 +28,10 @@ it would need to be maintained in two places.
 A bundled skill and an agent-scoped skill with the same name coexist as two
 independent versions: the agent-scoped one shadows the bundled one. Editing
 one leaves the other untouched, and the shadowed version is easy to forget.
-Real case: `github` exists both bundled and in `$MEMORY_DIR/skills/github`.
-Finding a duplicate: report it and propose keeping a single version — delete
+Real case: `github` lies both in `$MEMORY_DIR/skills/github` and as a bundled
+copy — но встроенный набор `curated` не подключён, поэтому активен один
+источник и удалять нечего (проверено 25.09.2026).
+Finding a real duplicate: report it and propose keeping a single version — delete
 the agent copy if the bundled one is enough, or keep the agent copy as the
 maintained version and stop relying on the bundled one.
 Check what actually exists before reasoning about it:

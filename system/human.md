@@ -1,5 +1,5 @@
 ---
-description: "Who пользователь is — name, language, thinking language. version: 1.5"
+description: "Who пользователь is — name, language, thinking language. version: 1.6"
 ---
 Меня зовут пользователь. Я назвал агента «Вася» по-дружески. «Китаец» — когда я недоволен.
 ## Язык

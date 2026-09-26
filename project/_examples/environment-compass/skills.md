@@ -1,5 +1,5 @@
 ---
-description: "Skills relevant to environment-compass project. version: 1.5"
+description: "Skills relevant to environment-compass project. version: 1.6"
 ---
 
 # Skills: Environment Compass

@@ -1,5 +1,5 @@
 ---
-description: "Windows-specific commands, PowerShell equivalents, encoding, and script writing rules. version: 1.5"
+description: "Windows-specific commands, PowerShell equivalents, encoding, and script writing rules. version: 1.6"
 ---
 # Windows-гайд
 

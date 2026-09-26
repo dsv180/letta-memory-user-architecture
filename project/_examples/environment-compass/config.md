@@ -1,5 +1,5 @@
 ---
-description: "Environment Compass — конфигурация: пути, git, техдетали. version: 1.5"
+description: "Environment Compass — конфигурация: пути, git, техдетали. version: 1.6"
 ---
 
 # Конфигурация: Environment Compass

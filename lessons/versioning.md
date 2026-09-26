@@ -1,5 +1,5 @@
 ---
-description: "How versioning works — agent runs inside harness, not self-updating. version: 1.5"
+description: "How versioning works — agent runs inside harness, not self-updating. version: 1.6"
 ---
 
 # Версионирование

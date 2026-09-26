@@ -1,5 +1,5 @@
 ---
-description: "Lesson: specific technical cases — npm, proxy, CWD. version: 1.5"
+description: "Lesson: specific technical cases — npm, proxy, CWD, mods and tools. version: 1.6"
 ---
 # Урок: технические специфические случаи
 - npm не заблокирован в корпоративной сети — проблема может быть в имени пакета, версии или платформенном суффиксе. (Пример: `@example.ai/xls-cli` vs `@example.ai/xls-cli-win32-x64`).
@@ -9,3 +9,8 @@ description: "Lesson: specific technical cases — npm, proxy, CWD. version: 1.5
 - Иконки агентов менять можно — не утверждай обратное.
 - Время — всегда бери из system-reminders, не гадай. Часовой пояс пользователя — домашний регион, GMT+3.
 - При установке любого ПО сначала уточняй режим: от имени администратора для всех пользователей или только для текущего. На Windows это критично — влияет на PATH и совместимость.
+
+## Моды и инструменты
+- english-guard мод — не блокируй русский язык. Модифицируй детектор, чтобы пропускать кириллицу.
+- Моды должны быть самодостаточными: описание, глоссарий — в MemFS, не ссылайся на файлы в Downloads.
+- Для работы с Office-файлами используй OfficeCLI и xls-cli. Python-библиотеки (openpyxl, python-docx) — больше не использовать.

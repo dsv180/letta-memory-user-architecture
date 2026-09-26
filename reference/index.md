@@ -1,8 +1,8 @@
 ---
-description: "Связи между файлами проектов. Данные — в index.json, инструкции — в PROJECTS.md. version: 1.5"
+description: "Связи между файлами проектов. Данные — в index.json, инструкции — в PROJECTS.md. version: 1.6"
 ---
 # Связи проектов
-Карта файлов проектов. Данные — в [[project/index.json]]. Инструкции — в [[project/PROJECTS.md]].
+Карта файлов проектов. Данные — в [[reference/index.json]]. Инструкции — в [[reference/PROJECTS.md]].
 ## [[path]] links to all projects
 - [[project/<проект 1>/config.md]]
 - [[project/<проект 1>/notes.md]]
@@ -20,3 +20,9 @@ description: "Связи между файлами проектов. Данны�
 - [[project/environment-compass/notes.md]]
 - [[project/environment-compass/tasks.md]]
 - [[project/environment-compass/skills.md]]
+- [[project/memory-architecture/config.md]]
+- [[project/memory-architecture/notes.md]]
+- [[project/memory-architecture/tasks.md]]
+- [[project/memory-architecture/project-rules.md]]
+- [[project/memory-architecture/project-rules/pipeline.md]]
+- [[project/memory-architecture/project-rules/repository.md]]

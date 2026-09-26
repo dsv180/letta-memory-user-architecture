@@ -1,5 +1,5 @@
 ---
-description: "Lesson: YAML frontmatter — allowed keys, version in description. version: 1.5"
+description: "Lesson: YAML frontmatter — allowed keys, version in description. version: 1.6"
 ---
 # Lesson: YAML frontmatter
 ## Allowed keys in memory files
@@ -12,7 +12,7 @@ with an error. This applies to all memory files, not only to `system/`.
 ## Where to put version
 Version goes inside `description`, wrapped in double quotes:
     ---
-    description: "Lesson: memory and agents. version: 1.5"
+    description: "Lesson: memory and agents. version: 1.6"
     ---
 ## Colon in description
 If `description` contains a colon followed by a space (`: `), YAML parses it
@@ -23,7 +23,7 @@ If the value is wrapped in double quotes, a straight double quote inside it
 (`"нет интернета"`) closes the string and breaks YAML. Use guillemets or
 single quotes for inner quotes:
     ---
-    description: "Сеть и DNS — диагностика «нет интернета». version: 1.5"
+    description: "Сеть и DNS — диагностика «нет интернета». version: 1.6"
     ---
 Before commit — check every new description for inner straight double
 quotes; guillemets «» are the safe choice for Russian text.

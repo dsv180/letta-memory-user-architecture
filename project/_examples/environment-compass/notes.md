@@ -1,5 +1,5 @@
 ---
-description: "Environment Compass — заметки, идеи, развитие. version: 1.5"
+description: "Environment Compass — заметки, идеи, развитие. version: 1.6"
 ---
 
 # Environment Compass
