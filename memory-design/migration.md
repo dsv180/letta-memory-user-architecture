@@ -9,7 +9,7 @@ description: Memory migration — как применить эту архите�
 
     memory-design/     — конституция: устройство и процедуры
     reference/         — правила поведения, уроки, справочники
-    projects/          — инструкции, шаблон, примеры проектов
+    project/          — инструкции, шаблон, примеры проектов
     system/            — ядро: persona.md, human.md
     system-prompt/     — компактный system prompt
 
@@ -19,21 +19,21 @@ description: Memory migration — как применить эту архите�
 ## Что можно брать
 - `memory-design/` — целиком: устройство (`architecture.md`), сопровождение (`lifecycle.md`), миграция (этот файл).
 - `reference/core-rules.md`, `reference/lessons.md`, `reference/lessons/*` — правила и уроки. Переноси то, чего у тебя нет; свои уроки не удаляй.
-- `projects/PROJECTS.md`, `projects/_template.json`, `projects/index.md` — инструкции, шаблон нового проекта и схема связей.
+- `project/PROJECTS.md`, `project/_template.json`, `project/index.md` — инструкции, шаблон нового проекта и схема связей.
 
 ## Что НЕ копировать
 - `system/persona.md`, `system/human.md` — личность и данные пользователя у каждого свои.
-- `projects/index.json` — твой манифест проектов; в слепке он пуст.
-- `projects/_examples/` — примеры структуры, а не твои проекты.
+- `project/index.json` — твой манифест проектов; в слепке он пуст.
+- `project/_examples/` — примеры структуры, а не твои проекты.
 - `system-prompt/system-prompt.txt` — применять только осознанно (процедура — в `reference/lessons/system-prompt-updates.md`).
 
 ## Порядок применения
 1. Сделай снимок своей памяти (git-коммит или копию папки) — чтобы был откат.
-2. Приведи структуру к слоям: `system/`, `memory-design/`, `reference/`, `projects/`.
+2. Приведи структуру к слоям: `system/`, `memory-design/`, `reference/`, `project/`.
 3. Перенеси общие правила и уроки, не затирая свои.
-4. Приведи `projects/` к схеме: `PROJECTS.md` + `index.json` + `index.md` + `_template.json`; каждый проект — к фиксированному набору файлов (`config.md`, `notes.md`, `tasks.md` + опциональные `skills.md`, `glossary.md`, `project-rules.md` и папка `project-rules/`). Свои проекты не удаляй — только приведи к схеме.
+4. Приведи `project/` к схеме: `PROJECTS.md` + `index.json` + `index.md` + `_template.json`; каждый проект — к фиксированному набору файлов (`config.md`, `notes.md`, `tasks.md` + опциональные `skills.md`, `glossary.md`, `project-rules.md` и папка `project-rules/`). Свои проекты не удаляй — только приведи к схеме.
 5. Frontmatter каждого `.md`: `description` обязателен, `version` — внутри `description`, в кавычках.
-6. Проверь `[[path]]`-ссылки и обнови `projects/index.json`.
+6. Проверь `[[path]]`-ссылки и обнови `project/index.json`.
 
 ## После внедрения
 Память живёт по [[memory-design/lifecycle.md]]: добавление и удаление файлов, обновление своей версии, выпуск слепка.

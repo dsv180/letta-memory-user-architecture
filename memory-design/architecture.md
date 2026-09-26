@@ -24,16 +24,16 @@ description: "Memory architecture — layers, files, rules. version: 1.5"
 **Правила:**
 - Один файл — одна тема.
 - Новый урок — в `lessons/`, ссылка в оглавлении `lessons.md`.
-- Урок, специфичный для проекта — в `projects/<name>/project-rules/`, не в `reference/`.
+- Урок, специфичный для проекта — в `project/<name>/project-rules/`, не в `reference/`.
 - Новый файл в `reference/` — добавь ссылку в `lessons.md` (если это урок)
   или упомяни в этом разделе (если справочник).
-### projects/ — проекты
-Файлы уровня projects/:
+### project/ — проекты
+Файлы уровня project/:
 - PROJECTS.md — инструкции
 - index.json — данные о проектах
 - index.md — [[path]]-связи
 - _template.json — шаблон нового проекта
-Папка проекта projects/<name>/:
+Папка проекта project/<name>/:
 - config.md, notes.md, tasks.md — обязательно
 - skills.md, glossary.md, project-rules.md — опционально
 - project-rules/ — регламенты и справочники проекта (опционально)
@@ -56,8 +56,8 @@ description: "Memory architecture — layers, files, rules. version: 1.5"
 остальное читается явно.
 ---
 ## Соглашения
-**CWD и проект.** При переключении на проект CWD диалога = physical_path проекта. Детали — в [[projects/PROJECTS.md]].
-**Скиллы.** Agent-scoped — $MEMORY_DIR/skills/. Project-scoped — <physical_path>/.agents/skills/. Global-scoped — ~/.letta/skills/. Детали — в [[projects/PROJECTS.md]].
+**CWD и проект.** При переключении на проект CWD диалога = physical_path проекта. Детали — в [[project/PROJECTS.md]].
+**Скиллы.** Agent-scoped — $MEMORY_DIR/skills/. Project-scoped — <physical_path>/.agents/skills/. Global-scoped — ~/.letta/skills/. Детали — в [[project/PROJECTS.md]].
 ---
 ## Жизненный цикл
 Добавление и удаление файлов, обновление версии и выпуск слепка — процедуры в [[memory-design/lifecycle.md]]; внедрение архитектуры в свою память — в [[memory-design/migration.md]]. Здесь только принципы:
@@ -65,5 +65,5 @@ description: "Memory architecture — layers, files, rules. version: 1.5"
 - Публикуемый слепок версии обезличивается до коммита: репозиторий публичный.
 ---
 ## Что НЕ входит в архитектуру
-- **`skills/`** — управляются харнесом. `projects/<project>/skills.md` — рекомендации, какие скиллы загружать в проекте, и отметки о project-scoped скиллах; сами скиллы лежат вне MemFS (детали — [[projects/PROJECTS.md]]).
+- **`skills/`** — управляются харнесом. `project/<project>/skills.md` — рекомендации, какие скиллы загружать в проекте, и отметки о project-scoped скиллах; сами скиллы лежат вне MemFS (детали — [[project/PROJECTS.md]]).
 - **`profile.png`** — аватар. Лежит в корне памяти, архитектуре не подчиняется.

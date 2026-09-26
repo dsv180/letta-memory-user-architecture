@@ -90,7 +90,7 @@ def main() -> int:
     check(hits("Иван Петрович"), "гейт ловит имя из локального слоя")
     check(not hits("C:\\Users\\<username>\\Documents"), "гейт пропускает <username>")
     check(not hits("C:\\Users\\<user>\\AppData"), "гейт пропускает любой <...> плейсхолдер")
-    check(not hits("~/projects/file.txt"), "гейт пропускает ~")
+    check(not hits("~/project/file.txt"), "гейт пропускает ~")
     check(not hits("$MEMORY_DIR/system/persona.md"), "гейт пропускает $MEMORY_DIR")
 
     print("Тест 3: локальный слой не обязателен, но о его отсутствии сообщается")
@@ -100,9 +100,10 @@ def main() -> int:
     gen = load_module("gen", "new-project.py")
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
-        proj = root / "projects"
-        proj.mkdir(parents=True)
-        (proj / "index.json").write_text(
+        ref = root / "reference"
+        ref.mkdir(parents=True)
+        proj = root / "project"
+        (ref / "index.json").write_text(
             json.dumps(
                 {
                     "_note": "temp",
@@ -115,14 +116,14 @@ def main() -> int:
             ),
             encoding="utf-8",
         )
-        (proj / "_template.json").write_text(
+        (ref / "_template.json").write_text(
             json.dumps(
                 {"fields": {"git": {"value": {"local": {"enabled": False}, "remote": {"enabled": False}}}}},
                 ensure_ascii=False,
             ),
             encoding="utf-8",
         )
-        (proj / "index.md").write_text(
+        (ref / "index.md").write_text(
             "---\ndescription: x\n---\n# Связи\n## [[path]] links to all projects\n", encoding="utf-8"
         )
 
@@ -138,14 +139,14 @@ def main() -> int:
         )
         cfg = (proj / "demo-proj" / "config.md").read_text(encoding="utf-8")
         check("Демо" in cfg and "C:\\Work\\demo" in cfg, "шаблон подставил title и path", cfg)
-        index = json.loads((proj / "index.json").read_text(encoding="utf-8"))
+        index = json.loads((ref / "index.json").read_text(encoding="utf-8"))
         check(index["projects"]["demo-proj"]["status"] == "active", "манифест: проект добавлен")
         check(
             index["statistics"]["total"] == 1 and index["statistics"]["active"] == 1,
             "statistics пересчитан",
         )
-        md = (proj / "index.md").read_text(encoding="utf-8")
-        check("[[projects/demo-proj/notes.md]]" in md, "index.md: добавлены ссылки")
+        md = (ref / "index.md").read_text(encoding="utf-8")
+        check("[[project/demo-proj/notes.md]]" in md, "index.md: добавлены ссылки")
 
         try:
             gen.create_project(root, name_en="demo-proj", title="Демо", physical_path="C:\\Work\\demo")
@@ -160,13 +161,13 @@ def main() -> int:
 
     print("Тест 5: локальные файлы не попадают в слепок")
     rules_lf = dict(rules)
-    rules_lf["local_files"] = ["reference/lessons/local-only.md"]
+    rules_lf["local_files"] = ["lessons/local-only.md"]
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
-        local_file = root / "reference" / "lessons" / "local-only.md"
+        local_file = root / "lessons" / "local-only.md"
         local_file.parent.mkdir(parents=True)
         local_file.write_text("локальный справочник", encoding="utf-8")
-        keep_file = root / "reference" / "lessons.md"
+        keep_file = root / "lessons.md"
         keep_file.write_text("индекс", encoding="utf-8")
         old_root = anon.ROOT
         anon.ROOT = root

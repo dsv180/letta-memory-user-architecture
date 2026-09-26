@@ -42,7 +42,7 @@ Check what actually exists before reasoning about it:
 3. Create `SKILL.md` with frontmatter (`name`, `description`).
 4. Ensure dialogue CWD = project `physical_path` — the skill will be picked
    up on the next turn.
-5. In `projects/<name>/skills.md` add a line with the skill name and
+5. In `project/<name>/skills.md` add a line with the skill name and
    the marker "project-scoped".
 ## Limitations
 - not managed by Letta — manual file creation only;

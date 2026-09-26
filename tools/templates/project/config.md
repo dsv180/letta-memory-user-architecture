@@ -1,11 +1,11 @@
 ---
-description: "{{title}} — конфигурация: пути, инструменты, git. version: 1.5"
+description: "{{title}} — конфигурация: пути, инструменты, git. version: 1.6"
 ---
 # Конфигурация: {{title}}
 
 ## Пути
 - **physical_path:** `{{physical_path}}`
-- **MemFS:** `projects/{{name_en}}/`
+- **MemFS:** `project/{{name_en}}/`
 
 ## Инструменты
 - <список инструментов и библиотек, которые нужны проекту>

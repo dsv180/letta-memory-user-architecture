@@ -6,7 +6,7 @@ description: "Environment Compass — конфигурация: пути, git, �
 
 ## Пути
 - **physical_path:** `<диск пользователя>\Git-projects\environment-compass`
-- **MemFS:** `projects/environment-compass/`
+- **MemFS:** `project/environment-compass/`
 
 ## Репозиторий
 - **GitHub:** https://github.com/<логин GitHub>/environment-compass

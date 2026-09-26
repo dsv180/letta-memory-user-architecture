@@ -2,9 +2,9 @@
 """Генератор каркаса проекта в MemFS.
 
 Делает механическую часть создания проекта:
-  - создаёт projects/<name_en>/ с обязательными файлами из tools/templates/project/;
-  - добавляет запись в projects/index.json и обновляет statistics;
-  - добавляет [[path]]-ссылки в projects/index.md.
+  - создаёт project/<name_en>/ с обязательными файлами из tools/templates/project/;
+  - добавляет запись в reference/index.json и обновляет statistics;
+  - добавляет [[path]]-ссылки в reference/index.md.
 
 Смысловую часть (название, путь, описание, статус) подставляет тот, кто вызывает.
 Физическую папку на диске генератор НЕ создаёт — она вне репозитория, её создаёт
@@ -72,9 +72,10 @@ def create_project(
     if not physical_path.strip():
         raise ValueError("physical_path обязателен")
 
-    projects_dir = root / "projects"
-    index_path = projects_dir / "index.json"
-    index_md = projects_dir / "index.md"
+    projects_dir = root / "project"
+    service_dir = root / "reference"
+    index_path = service_dir / "index.json"
+    index_md = service_dir / "index.md"
     project_dir = projects_dir / name_en
 
     if not index_path.is_file():
@@ -85,8 +86,8 @@ def create_project(
     if project_dir.exists():
         raise ValueError(f"папка уже существует: {project_dir}")
 
-    templates_meta = read_json(projects_dir / "_template.json") if (
-        projects_dir / "_template.json"
+    templates_meta = read_json(service_dir / "_template.json") if (
+        service_dir / "_template.json"
     ).is_file() else {}
     default_git = (
         templates_meta.get("fields", {}).get("git", {}).get("value")
@@ -100,7 +101,7 @@ def create_project(
         "description": description,
         "status": status,
         "created_at": today,
-        "project_home": f"projects/{name_en}",
+        "project_home": f"project/{name_en}",
         "physical_path": physical_path,
         "git": default_git,
         "depends_on": [],
@@ -140,7 +141,7 @@ def create_project(
     if not dry:
         write_json(index_path, index)
 
-    links = "\n".join(f"- [[projects/{name_en}/{name}]]" for name in PROJECT_FILES)
+    links = "\n".join(f"- [[project/{name_en}/{name}]]" for name in PROJECT_FILES)
     log.append(f"append {index_md.relative_to(root)} (+{len(PROJECT_FILES)} ссылок)")
     if not dry and index_md.is_file():
         text = index_md.read_text(encoding="utf-8").rstrip("\n")

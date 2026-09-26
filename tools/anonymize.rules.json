@@ -1,7 +1,7 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "_comment": "Общий (публичный) слой правил обезличивания. Только машинно-независимое: переменные окружения, структурные шаблоны путей, политика projects, список непубликуемых файлов. Личные имена, организации и специфичные пути — в tools/anonymize.local.json (он в .gitignore).",
-  "scan": ["memory-design", "reference", "projects", "system", "system-prompt", "README.md", "MIGRATION.md", "CHANGELOG.md"],
+  "scan": ["memory-design", "reference", "lessons", "project", "system", "system-prompt", "README.md", "MIGRATION.md", "CHANGELOG.md"],
   "home_placeholder": "~",
   "env_paths": [
     { "env": "MEMORY_DIR", "placeholder": "$MEMORY_DIR" },
@@ -14,11 +14,12 @@
     ["(^|[.!?]\\s+)пользовател", "\\1Пользовател"]
   ],
   "projects": {
-    "dir": "projects",
+    "dir": "project",
+    "service_dir": "reference",
     "keep_as_examples": ["environment-compass"],
     "index_template": "tools/templates/index.json"
   },
-  "local_files": ["memory-design/repo.md"],
+  "local_files": [],
   "forbidden_patterns": [
     "[A-Za-z]:\\\\Users\\\\(?!<)[^\\\\\\s]+",
     "(?:/home/|/Users/)(?!<)[^\\s/]+"

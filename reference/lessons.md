@@ -17,7 +17,7 @@ description: "Lessons entry point — instructions and index. version: 1.5"
    с frontmatter: description в кавычках, version внутри description:
    `description: "Урок: <тема>. version: 1.5"`, и заголовком `# Урок: <тема>`.
 4. Добавь `[[path]]`-ссылку в оглавление ниже.
-5. Если урок специфичен для проекта — пиши в `projects/<name>/project-rules/`,
+5. Если урок специфичен для проекта — пиши в `project/<name>/project-rules/`,
    а не в `reference/lessons/`.
 Критерий: если урок повторится в другом проекте — он общий. Если только
 здесь — проектный.

@@ -184,7 +184,7 @@ def process_projects(rules: dict, dry: bool) -> list[str]:
     tpl = cfg.get("index_template")
     if tpl:
         src = ROOT / tpl
-        dst = proj / "index.json"
+        dst = ROOT / cfg.get("service_dir", "reference") / "index.json"
         if src.is_file():
             same = False
             if dst.is_file():

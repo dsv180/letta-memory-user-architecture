@@ -1,12 +1,12 @@
 {
-  "_description": "Шаблон нового проекта. Копируется в projects/index.json при создании. Файлы создаются в MemFS, физические папки — на диске.",
+  "_description": "Шаблон нового проекта. Копируется в project/index.json при создании. Файлы создаются в MemFS, физические папки — на диске.",
   "fields": {
     "title": { "required": true, "type": "string", "description": "Русское название проекта", "value": "" },
-    "name_en": { "required": true, "type": "string", "description": "Английский идентификатор, имя папки в projects/", "value": "" },
+    "name_en": { "required": true, "type": "string", "description": "Английский идентификатор, имя папки в project/", "value": "" },
     "description": { "required": true, "type": "string", "description": "Краткое описание", "value": "" },
     "status": { "required": true, "type": "enum", "values": ["proposal", "planning", "active", "paused", "completed", "published", "archived"], "description": "Статус проекта", "value": "proposal" },
     "created_at": { "required": true, "type": "date", "description": "Дата создания YYYY-MM-DD", "value": "" },
-    "project_home": { "required": true, "type": "path", "description": "projects/<name_en>", "value": "" },
+    "project_home": { "required": true, "type": "path", "description": "project/<name_en>", "value": "" },
     "physical_path": { "required": true, "type": "path", "description": "Абсолютный путь к папке проекта на диске", "value": "" },
     "git": {
       "required": false,
@@ -42,7 +42,7 @@
   },
   "rules": [
     "MemFS — это память, не зеркало диска. Структуру физических папок в MemFS не копировать.",
-    "Внутри проекта в MemFS — только файлы, кроме служебной папки project-rules/. Максимальная глубина: projects/<name>/project-rules/<file>.",
+    "Внутри проекта в MemFS — только файлы, кроме служебной папки project-rules/. Максимальная глубина: project/<name>/project-rules/<file>.",
     "skills.md, glossary.md, project-rules.md создаются только при наличии контента.",
     "Статус проекта — только в JSON. В tasks.md статуса нет.",
     "Структура физических папок не описывается в notes.md — она меняется, синхронизация невозможна.",
