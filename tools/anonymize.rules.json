@@ -23,7 +23,7 @@
     "system/persona.md": "memory-design/templates/persona.md",
     "system/human.md": "memory-design/templates/human.md"
   },
-  "local_files": [],
+  "local_files": ["system/active-work.md"],
   "forbidden_patterns": [
     "[A-Za-z]:\\\\Users\\\\(?!<)[^\\\\\\s]+",
     "(?:/home/|/Users/)(?!<)[^\\s/]+"
