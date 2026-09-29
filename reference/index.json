@@ -1,11 +1,39 @@
 {
-  "_note": "Манифест проектов. У версии-слепка он пуст: проекты у каждого агента свои. Примеры проектов — в project/_examples/. Шаблон нового проекта — в _template.json.",
-  "projects": {},
+  "_note": "Манифест проектов. У каждого агента проекты свои: ниже — полный пример записи. Примеры проектов — в project/_examples/. Шаблон нового проекта — в _template.json.",
+  "projects": {
+    "example-project": {
+      "title": "Пример проекта",
+      "name_en": "example-project",
+      "description": "Краткое описание проекта.",
+      "status": "active",
+      "created_at": "2026-01-01",
+      "project_home": "project/example-project",
+      "physical_path": "$MEMORY_DIR/../example-project",
+      "git": {
+        "local": { "enabled": true },
+        "remote": {
+          "enabled": true,
+          "hosting": "github",
+          "url": "https://github.com/<username>/example-project",
+          "visibility": "public",
+          "default_branch": "main",
+          "latest_tag": "v0.1.0"
+        }
+      },
+      "depends_on": [],
+      "skills": ["github"],
+      "tags": ["example"],
+      "version": 1,
+      "metadata": {}
+    }
+  },
   "archived": {},
   "statistics": {
-    "total": 0,
-    "active": 0,
+    "total": 1,
+    "active": 1,
+    "paused": 0,
+    "published": 0,
     "archived": 0,
-    "last_updated": ""
+    "last_updated": "2026-01-01"
   }
 }

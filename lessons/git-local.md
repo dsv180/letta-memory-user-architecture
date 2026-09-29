@@ -1,5 +1,5 @@
 ---
-description: "Lesson: local git — filter-repo on Windows with Cyrillic, renaming folders, local author alias, sync check. version: 1.6"
+description: "Lesson: local git — filter-repo on Windows with Cyrillic, renaming folders, local author alias, sync check. version: 1.7"
 ---
 # Урок: локальный git
 ## git filter-repo на Windows с кириллицей
@@ -13,8 +13,8 @@ description: "Lesson: local git — filter-repo on Windows with Cyrillic, renami
 7. **`--replace-text` переписывает и служебные файлы.** Замены применяются ко всем файлам всей истории — включая файлы, где сами паттерны хранятся как данные (например, JSON с правилами обезличивания). Такие файлы «ломают сами себя». Если в репо есть такой служебный файл — перепись текстом не подходит, лучше сброс истории (orphan-коммит + force-push). Детали — в локальных регламентах проекта архитектуры памяти (в публичный слепок не входят).
 Пример рабочего callback (Python):
     import git_filter_repo, sys
-    name  = "Китаец Вася".encode("utf-8")
-    email = b"agent-local-8a9f04e0@example.com"
+    name  = "{{AGENT_NAME}}".encode("utf-8")
+    email = b"<agent-local-id>@example.com"
     cb = f"""NEW_NAME = {name!r}
     NEW_EMAIL = {email!r}
     commit.author_name = NEW_NAME
@@ -42,8 +42,8 @@ description: "Lesson: local git — filter-repo on Windows with Cyrillic, renami
 
 ## Локальный псевдоним автора для репозитория
 Для репозитория, где все коммиты должны быть от агента, а не от реального пользователя — задать локальный конфиг:
-    git config user.name "Китаец Вася"
-    git config user.email "agent-local-8a9f04e0@example.com"
+    git config user.name "{{AGENT_NAME}}"
+    git config user.email "<agent-local-id>@example.com"
 Это только локально, глобальные настройки не трогаются. Проверка: `git config --local --get user.name`, `git config --local --get user.email`.
 
 ## Проверка «синхронизация ничего не потеряла»
@@ -51,3 +51,6 @@ description: "Lesson: local git — filter-repo on Windows with Cyrillic, renami
     git -C <repo> diff --name-status <sha-облачного-HEAD> HEAD   # что добавлено/удалено/изменено
     git -C <repo> diff <sha-облачного-HEAD> HEAD -- <файл>       # построчно: только обезличивание?
 Удалённые файлы не исчезают: `git cat-file -e <sha>:<path>` подтверждает, что блоб лежит в истории. Пока пользователь не подтвердил, что потерь нет, бэкап-ветку не удалять.
+
+## Направление вывода `git diff --no-index`
+Сравнение двух файлов вне репозитория (например, копии проекта на диске и файла памяти) читается по порядку аргументов: `git diff --no-index A B` → строки с `-` есть только в `A`, строки с `+` — только в `B`. Перепутанный порядок читается как «наоборот» и приводит к неверному выводу о том, кто от кого отстал (агент счёл устаревшие строки памяти строками копии). Перед сверкой осознанно выбрать, какой файл считать источником, и держать его вторым аргументом. Практика сверки — [[lessons/project-work.md]].

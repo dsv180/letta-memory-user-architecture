@@ -1,8 +1,8 @@
 ---
-description: "Lesson: project-scoped skills — discovery, priority, creation. version: 1.6"
+description: "Lesson: project-scoped skills — discovery, priority, creation. version: 1.7"
 ---
 # Lesson: project-scoped skills
-Источник: [Skills](https://docs.letta.com/configuration/skills) (docs.letta.com). Сверено 26.09.2026.
+Источник: [Skills](https://docs.letta.com/configuration/skills) (docs.letta.com).
 ## How Letta discovers skills
 The harness scans four sources in descending priority. On ID collision,
 the higher-priority source wins:
@@ -30,7 +30,7 @@ independent versions: the agent-scoped one shadows the bundled one. Editing
 one leaves the other untouched, and the shadowed version is easy to forget.
 Real case: `github` lies both in `$MEMORY_DIR/skills/github` and as a bundled
 copy — но встроенный набор `curated` не подключён, поэтому активен один
-источник и удалять нечего (проверено 25.09.2026).
+источник и удалять нечего.
 Finding a real duplicate: report it and propose keeping a single version — delete
 the agent copy if the bundled one is enough, or keep the agent copy as the
 maintained version and stop relying on the bundled one.

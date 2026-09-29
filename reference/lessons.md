@@ -1,5 +1,5 @@
 ---
-description: "Lessons entry point — instructions and index. version: 1.6"
+description: "Lessons entry point — instructions and index. version: 1.7"
 ---
 # Уроки
 Уроки — правила поведения и техническое знание, извлечённое из опыта.
@@ -15,14 +15,14 @@ description: "Lessons entry point — instructions and index. version: 1.6"
 2. Если тема уже есть в оглавлении — допиши в соответствующий файл.
 3. Если темы ещё нет — создай файл `lessons/<тема>.md`
    с frontmatter: description в кавычках, version внутри description:
-   `description: "Урок: <тема>. version: 1.6"`, и заголовком `# Урок: <тема>`.
+   `description: "Урок: <тема>. version: 1.7"`, и заголовком `# Урок: <тема>`.
 4. Добавь `[[path]]`-ссылку в оглавление ниже.
 5. Если урок специфичен для проекта — пиши в `project/<name>/project-rules/`,
    а не в `lessons/`.
 Критерий: если урок повторится в другом проекте — он общий. Если только
 здесь — проектный.
 
-**Уроки — живой слой** (позиция пользователя, 26.09.2026): их положено переписывать
+**Уроки — живой слой:** их положено переписывать
 и совершенствовать. Существующий урок дополнять и уточнять, а не обходить
 стороной; новые факты и источник — прямо в него.
 
@@ -35,6 +35,7 @@ description: "Lessons entry point — instructions and index. version: 1.6"
 - [[lessons/project-work.md]] — работа с проектом: создание, проектная папка, копии и бэкапы
 - [[lessons/network.md]] — сеть, DNS, сетевая безопасность
 - [[lessons/letta-code-issues.md]] — оформление issues в letta-ai/letta-code
+- [[lessons/subagent-delegation.md]] — делегирование субагентам: накопление опыта
 
 ## Справочники
 - [[lessons/communication-protocol.md]] — протокол общения, разбор длинных сообщений
@@ -43,6 +44,7 @@ description: "Lessons entry point — instructions and index. version: 1.6"
 - [[lessons/secrets-guide.md]] — работа с секретами
 - [[lessons/system-prompt-updates.md]] — обновление system prompt после апдейта ЛД
 - [[lessons/letta-desktop.md]] — изнанка ЛД: папка диалога, Desktop-проекты, граф памяти
+- [[lessons/aitunnel.md]] — провайдер AITUNNEL: base URL, ключ, карта документации
 - [[lessons/versioning.md]] — версионирование Letta
 - [[lessons/windows-guide.md]] — команды Windows/PowerShell
 - [[lessons/word-formatting.md]] — оформление Word

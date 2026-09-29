@@ -1,5 +1,42 @@
 {
   "_description": "Шаблон нового проекта. Копируется в reference/index.json при создании. Файлы создаются в MemFS, физические папки — на диске.",
+  "manifest": {
+    "_description": "Форма файла reference/index.json. Описание полей записи проекта — в fields ниже.",
+    "type": "object",
+    "required_keys": ["projects", "archived", "statistics"],
+    "projects": "объект: ключ — name_en, значение — запись проекта (поля в fields)",
+    "archived": "объект той же формы: проекты со статусом archived",
+    "statistics": {
+      "required": true,
+      "fields": ["total", "active", "paused", "published", "archived", "last_updated"],
+      "note": "счётчики вычисляются из projects и archived; last_updated — YYYY-MM-DD"
+    },
+    "example_project": {
+      "title": "Пример проекта",
+      "name_en": "example-project",
+      "description": "Краткое описание проекта.",
+      "status": "active",
+      "created_at": "2026-01-01",
+      "project_home": "project/example-project",
+      "physical_path": "$MEMORY_DIR/../example-project",
+      "git": {
+        "local": { "enabled": true },
+        "remote": {
+          "enabled": true,
+          "hosting": "github",
+          "url": "https://github.com/<username>/example-project",
+          "visibility": "public",
+          "default_branch": "main",
+          "latest_tag": "v0.1.0"
+        }
+      },
+      "depends_on": [],
+      "skills": ["github"],
+      "tags": ["example"],
+      "version": 1,
+      "metadata": {}
+    }
+  },
   "fields": {
     "title": { "required": true, "type": "string", "description": "Русское название проекта", "value": "" },
     "name_en": { "required": true, "type": "string", "description": "Английский идентификатор, имя папки в project/", "value": "" },
@@ -24,7 +61,7 @@
     "metadata": { "required": false, "type": "object", "value": {} }
   },
   "memfs_files": [
-    { "name": "config.md", "required": true, "description": "Пути, инструменты, git" },
+    { "name": "config.md", "required": true, "description": "Пути, инструменты, git, проектные субагенты" },
     { "name": "notes.md", "required": true, "description": "Смысл проекта, специфика, контекст" },
     { "name": "tasks.md", "required": true, "description": "План работ. Статус — только в JSON" },
     { "name": "skills.md", "required": false, "description": "Скиллы проекта" },
@@ -45,6 +82,7 @@
     "Статус проекта — только в JSON. В tasks.md статуса нет.",
     "Структура физических папок не описывается в notes.md — она меняется, синхронизация невозможна.",
     "Project-scoped скиллы лежат в <physical_path>/.agents/skills/, не в MemFS. Процедура — в reference/PROJECTS.md.",
+    "Проектные субагенты лежат в <physical_path>/.letta/agents/, не в MemFS; в config.md — только секция subagents: (какие есть и зачем). Детали — в reference/SUBAGENTS.md, reference/PROJECTS.md.",
     "Файлы проекта (memfs_files) выкладываются в корень <physical_path>, без папки-обёртки.",
     "При обновлении копии на диске старая версия получает суффикс .bak1, затем .bak2 и далее — записи пользователя не затираются. По команде «уберись» агент собирает .bak* и вытаскивает пользу или удаляет.",
     "Правки пользователя в выложенных копиях агент не трогает, пока он не скажет, что с ними делать. Диск → память — только по явной команде."

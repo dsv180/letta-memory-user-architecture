@@ -1,5 +1,5 @@
 ---
-description: "{{title}} — план работ. version: 1.6"
+description: "{{title}} — план работ. version: 1.7"
 ---
 # План: {{title}}
 

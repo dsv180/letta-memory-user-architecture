@@ -1,5 +1,5 @@
 ---
-description: "Lesson: filing issues in letta-ai/letta-code — AI policy, required fields, links. version: 1.6"
+description: "Lesson: filing issues in letta-ai/letta-code — AI policy, required fields, links. version: 1.7"
 ---
 # Урок: issues в letta-ai/letta-code
 
@@ -35,7 +35,7 @@ Letta Code живёт по строгой AI-политике: issue, не со�
 - дословную фразу Human Verification.
 
 Тело — ровно как в шаблоне: заголовки секций (`### ...`), строки чекбоксов `- [x] ...`, фраза верификации без правок. От себя ничего не добавлять.
-Проверено 26.09.2026: issue, поданный так, остался `OPEN` без меток `invalid`/`spam`. После подачи всегда проверить состояние (`gh issue view <n> --json state,labels,comments`) — если гвард закрыл, переоформить через веб-форму.
+Issue, поданный так, остался `OPEN` без меток `invalid`/`spam`. После подачи всегда проверить состояние (`gh issue view <n> --json state,labels,comments`) — если гвард закрыл, переоформить через веб-форму.
 
 ## Дух политики
 - Человек отвечает за точность: воспроизвести самому, проверить код, доки и существующие issues, убрать спекуляции и заполнитель.

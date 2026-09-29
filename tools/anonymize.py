@@ -196,6 +196,29 @@ def process_projects(rules: dict, dry: bool) -> list[str]:
     return log
 
 
+def process_templates(rules: dict, dry: bool) -> list[str]:
+    """Файлы, публикуемые строго из эталона (ядро), — подменяются целиком.
+
+    Строковая замена в них хрупка (падежи, латиница/кириллица), поэтому
+    `system/persona.md` и `system/human.md` заменяются содержимым эталонов
+    `memory-design/templates/*`. Тот же приём, что `projects.index_template`.
+    """
+    log = []
+    for dst_rel, src_rel in rules.get("core_templates", {}).items():
+        src = ROOT / src_rel
+        dst = ROOT / dst_rel
+        if not src.is_file():
+            log.append(f"skip   {dst_rel} — нет эталона {src_rel}")
+            continue
+        if dst.is_file() and src.read_text(encoding="utf-8") == dst.read_text(encoding="utf-8"):
+            continue
+        log.append(f"reset  {dst_rel} <- {src_rel}")
+        if not dry:
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dst)
+    return log
+
+
 def process_local_files(rules: dict, dry: bool) -> list[str]:
     """Файлы, которые не публикуются: в слепок они не попадают.
 
@@ -249,6 +272,10 @@ def main() -> int:
 
     print("-- projects --")
     for line in process_projects(rules, args.dry_run):
+        print("  " + line)
+
+    print("-- шаблоны ядра --")
+    for line in process_templates(rules, args.dry_run):
         print("  " + line)
 
     print("-- локальные файлы --")

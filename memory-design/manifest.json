@@ -1,0 +1,18 @@
+{
+  "_description": "Манифест живой памяти. Единственный источник применённой версии канона (memory_version) и границы «канон/личное».",
+  "memory_version": "1.7",
+  "canon": [
+    "memory-design/",
+    "reference/",
+    "lessons/",
+    "system/active-work.md",
+    "system/subagents.md"
+  ],
+  "local": [
+    "project/",
+    "project/<name>/project-rules/",
+    "system/persona.md",
+    "system/human.md"
+  ],
+  "_note": "canon — обновляется при переходе на новую версию (из слепка, по дельте memory-design/deltas/<версия>.md). local — личное, при обновлении не трогается. Внутри смешанных слоёв (`reference/`, `lessons/`) граница проходит по смыслу, а не по папке: общее — канон, своё — личное (см. memory-design/architecture.md, «Что куда»). Проекты в слепок не публикуются и каноном не обновляются. memory_version поднимается при выпуске версии (memory-design/lifecycle.md)."
+}

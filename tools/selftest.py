@@ -178,6 +178,28 @@ def main() -> int:
         check(not local_file.exists(), "локальный файл удалён из слепка", str(log))
         check(keep_file.exists(), "остальные файлы не тронуты")
 
+    print("Тест 6: ядро подменяется эталоном целиком")
+    rules_tpl = dict(rules)
+    rules_tpl["core_templates"] = {"system/human.md": "memory-design/templates/human.md"}
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        (root / "system").mkdir(parents=True)
+        (root / "memory-design" / "templates").mkdir(parents=True)
+        (root / "system" / "human.md").write_text("Меня зовут Иван, личное", encoding="utf-8")
+        (root / "memory-design" / "templates" / "human.md").write_text(
+            "Меня зовут {{name}}", encoding="utf-8"
+        )
+        old_root = anon.ROOT
+        anon.ROOT = root
+        try:
+            log = anon.process_templates(rules_tpl, dry=False)
+            log2 = anon.process_templates(rules_tpl, dry=False)
+        finally:
+            anon.ROOT = old_root
+        got = (root / "system" / "human.md").read_text(encoding="utf-8")
+        check(got == "Меня зовут {{name}}", "ядро заменено содержимым эталона", got)
+        check(log2 == [], "повторный прогон не трогает совпадающий файл", str(log))
+
     if FAILED:
         print(f"\nПРОВАЛЕНО: {len(FAILED)} проверок -> {', '.join(FAILED)}")
         return 1
